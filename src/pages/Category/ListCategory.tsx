@@ -39,8 +39,8 @@ export const ListCategory = () => {
   );
 
   return (
-    <>
-      <h4>List of Category</h4>
+    <div className="flex flex-col px-6 py-5 items-center justify-center">
+      <h4 className="text-3xl mb-3 font-bold">List of Category</h4>
       <div className="flex justify-center items-center py-2 ">
         <input
           className="py-1 px-12 border border-black rounded-xl text-center shadow-2xl shadow-black"
@@ -57,8 +57,8 @@ export const ListCategory = () => {
         Add New Category
       </button>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full mt-3 text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
                 ID
@@ -109,6 +109,6 @@ export const ListCategory = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };

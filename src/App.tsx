@@ -8,6 +8,7 @@ import { Provider } from "./provider/Provider";
 import { Register } from "./pages/Auth/Register";
 import { Login } from "./pages/Auth/Login";
 import { PrivateLayout } from "./components/PrivateLayout";
+import { ErrorPage } from "./components/ErrorPage";
 
 function App() {
   return (
@@ -24,11 +25,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
           </Route>
-          <Route
-            path="*"
-            index
-            element={<h1 className="text-6xl font-bold">404 NOT FOUND SIR</h1>}
-          />
+          <Route path="*" index element={<ErrorPage />} />
         </Routes>
       </Provider>
     </>

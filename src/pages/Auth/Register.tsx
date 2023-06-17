@@ -1,7 +1,7 @@
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface FormProps {
@@ -125,6 +125,15 @@ export const Register = () => {
         >
           Register
         </button>
+        <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+          Already have an account ?{" "}
+          <Link
+            to="/login"
+            className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+          >
+            Sign In
+          </Link>
+        </p>
       </div>
       <p className="mt-10"></p>
     </div>

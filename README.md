@@ -41,6 +41,7 @@ $ pnpm dev
 ---
 
 1. Homepages
+2. Category
 
 ## Technologies 🚀
 

@@ -4,13 +4,12 @@ import { ReactNode, createContext, useState } from "react";
 type ContextType = {
   exampleValue: string;
   categories: Categories[];
-  pokemons: Pokemon[];
+
   fetchCategories: () => void;
-  fetchDataPokemon: () => void;
+
   saveCategory: (data: SaveCategory) => void;
   updateCategory: (data: UpdateCategory) => void;
   deleteCategory: (id: string) => void;
-  fetchCategoryById: (data: GetCategoryById) => void;
 } | null;
 
 type ProviderProps = {
@@ -34,36 +33,21 @@ type UpdateCategory = {
   status: string;
 };
 
-type GetCategoryById = {
-  id: string;
-  name?: string;
-};
-
-type Register = {
-  name: string;
-  email: string;
-  password: string;
-};
-
-interface Pokemon {
-  name: string;
-}
-
 export const AppContext = createContext<ContextType>(null);
 
 export const Provider = ({ children }: ProviderProps) => {
   const exampleValue = "this is example from context";
   const [categories, setCategories] = useState<Categories[]>([]);
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
   const token = window.localStorage.getItem("token");
-
-  const fetchDataPokemon = async () => {
-    const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
-    setPokemons(response.data.results);
-  };
 
   const fetchCategories = async () => {
     try {
+      const token = window.localStorage.getItem("token"); // Retrieve token when making the API request
+
+      if (!token) {
+        return; // Return early if token is not available
+      }
+
       const { data } = await axios.get(
         "https://mock-api.arikmpt.com/api/category",
         {
@@ -124,25 +108,15 @@ export const Provider = ({ children }: ProviderProps) => {
     fetchCategories();
   };
 
-  const fetchCategoryById = async (data: GetCategoryById) => {
-    await axios.get<Categories>(
-      `https://6423f83a47401740432fbc9e.mockapi.io/admins/${data.id}`
-    );
-    fetchCategories();
-  };
-
   return (
     <AppContext.Provider
       value={{
         exampleValue,
         categories,
-        pokemons,
         fetchCategories,
-        fetchDataPokemon,
         saveCategory,
         updateCategory,
         deleteCategory,
-        fetchCategoryById,
       }}
     >
       {children}

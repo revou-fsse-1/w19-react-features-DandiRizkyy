@@ -11,7 +11,7 @@ export const PrivateLayout = () => {
   const fetchProfile = async () => {
     if (token) {
       try {
-        await axios.get("https://mock-api.arikmpt.com/api/category", {
+        await axios.get("https://mock-api.arikmpt.com/api/user/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
